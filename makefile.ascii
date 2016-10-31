@@ -18,18 +18,18 @@ O       = .o
 
 OBJ     = complete$(O) command$(O) data$(O) display$(O) gap$(O) \
              key$(O) search$(O) buffer$(O) replace$(O) window$(O) \
-             main$(O) femtolisp/interface2editor$(O) \
-             femtolisp/flcall$(O)
+             main$(O) core/interface2editor$(O) \
+             core/flcall$(O)
 
 femtoEmacs$(E) : $(OBJ)
 	cd femtolisp && make -f Makefile 
 	$(LD) $(LDFLAGS) $(OBJ)  $(LISPLIBS) $(LIBS) -o femto$(E)
 
 interface2editor$(E) : $(OBJ)
-	$(CC) $(CFLAGS)  -I$(LLTDIR) -c femtolisp/interface2editor.c
+	$(CC) $(CFLAGS)  -I$(LLTDIR) -c core/interface2editor.c
 
 flcall$(E) : $(OBJ)
-	$(CC) $(CFLAGS)  -I./femtolisp/llt  -c femtolisp/flcall.c
+	$(CC) $(CFLAGS)  -I./femtolisp/llt  -c core/flcall.c
 
 complete$(O): complete.c header.h
 	$(CC) $(CFLAGS)  -I$(LLTDIR) -c complete.c

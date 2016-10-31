@@ -5,3 +5,4 @@ femto
 *.so
 *.a
 femtolisp/flisp
+*.pyc

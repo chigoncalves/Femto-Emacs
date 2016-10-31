@@ -19,8 +19,8 @@ O       = .o
 
 OBJ     = complete$(O) command$(O) data$(O) display$(O) gap$(O) \
              key$(O) search$(O) buffer$(O) replace$(O) utils$(O) window$(O) funcmap$(O) \
-             main$(O) femtolisp/interface2editor$(O) \
-	     femtolisp/flcall$(O)
+             main$(O) core/interface2editor$(O) \
+	     core/flcall$(O)
   
 femtoEmacs$(E) : $(OBJ) 
 	cd femtolisp && make -f Makefile.osx && \
@@ -29,10 +29,10 @@ femtoEmacs$(E) : $(OBJ)
              libflisp.a libllt.a
 	
 interface2editor$(E) : public.h $(OBJ)
-	$(CC) $(CFLAGS) -c femtolisp/interface2editor.c
+	$(CC) $(CFLAGS) -c core/interface2editor.c
 
 flcall$(E) : $(OBJ)
-	$(CC) $(CFLAGS) -c femtolisp/flcall.c
+	$(CC) $(CFLAGS) -c core/flcall.c
 
 complete$(O): complete.c header.h public.h
 	$(CC) $(CFLAGS) -c complete.c
